@@ -8,6 +8,7 @@
  */
 
 #include <stdio.h>
+#include <stdbool.h>
 
 #define PROTECT
 
@@ -33,6 +34,8 @@ extern FILE *LOG_FILE; //< Automaticly externs log-file when included.
 #else
 #define ASSERT(...)
 #endif
+
+#define EXEC_ASSERT(condition, action) {int __temp__ = (condition); ASSERT(__temp__, action);}
 
 /**
  * @brief Opens log-file in "wb" mode with no buffering.
